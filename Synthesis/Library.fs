@@ -135,16 +135,20 @@ let bizFuzz x =
 
 
 let monthDay d y =
-   (* let days = d / 30
     match d < 1 || d > 367 || y < 1582 with
     |true -> failwith "Not Implemented"
-    |false ->   match (d>0 || d < 366 && days > 0, isLeap(y)= false) with
-                |true, true  -> month(days)
-                |false, true -> month((days+1)
-                |false, false ->    match (d > 0 || d < 367 && days > 0, isLeap(y) = true) with
-                                    |true, true -> month(days)
-                                    |false, true -> month(days + 1) *)
- failwith "Not implemented"  
+    |false ->   
+        let result = (d /30) + 1
+        match d < 30 with
+        |true -> "January"
+        |_->    match (isLeap(y)= false) with
+                | true  ->
+                    let b,c = month ((d/30) + 1)
+                    b
+                | false-> 
+                             let m, r = month((d % 30) + 1)
+                             m 
+     //failwith "Not implemented"  
 
 let coord _ =
     failwith "Not implemented"
